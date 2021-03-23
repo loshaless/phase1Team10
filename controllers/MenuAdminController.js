@@ -1,6 +1,6 @@
 const {Food} = require('../models')
 
-class MenuController{
+class MenuAdminController{
      static findAll(req, res) {
         Food.findAll({
             order: [['id', 'ASC']]
@@ -93,4 +93,4 @@ class MenuController{
     }
 }
 
-module.exports = MenuController
+module.exports = MenuAdminController

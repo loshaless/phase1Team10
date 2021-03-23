@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const MenuController = require('../controllers/MenuController.js')
+const MenuAdminController = require('../controllers/MenuAdminController.js')
 
-router.get('/menuadmin', MenuController.findAll)
-router.get('/menuadmin/add', MenuController.menuShowAdd)
-router.post('/menuadmin/add', MenuController.menuAdd)
-router.get('/menuadmin/delete/:id', MenuController.deleteMenu)
-router.get('/menuadmin/edit/:id', MenuController.getEditMenu)
-router.post('/menuadmin/edit/:id', MenuController.postMenu)
+router.get('/menuadmin', MenuAdminController.findAll)
+router.get('/menuadmin/add', MenuAdminController.menuShowAdd)
+router.post('/menuadmin/add', MenuAdminController.menuAdd)
+router.get('/menuadmin/delete/:id', MenuAdminController.deleteMenu)
+router.get('/menuadmin/edit/:id', MenuAdminController.getEditMenu)
+router.post('/menuadmin/edit/:id', MenuAdminController.postMenu)
 
 
 module.exports = router

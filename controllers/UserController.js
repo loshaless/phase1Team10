@@ -16,7 +16,7 @@ class UserController{
         }
         User.create(newData)
             .then((data) => {
-                res.send('success')
+                res.render('successRegister.ejs')
             })
             .catch((err) => {
                 res.send(err)
@@ -33,8 +33,8 @@ class UserController{
             if (data.role === 'admin' && data.password === req.body.password) {
                 res.redirect('menuadmin')
             }
-            else if (data.role === 'customer' && data.password === req.body.password) {
-                res.send('ini customer')
+            else if (data.role === 'user' && data.password === req.body.password) {
+                res.redirect('menuuser')
             } else {
                 res.send('wrong password / username')
             }
