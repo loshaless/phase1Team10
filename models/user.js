@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            User.belongsToMany(models.Food, { through: models.FoodUser, foreignKey: foodId })
+            // User.belongsToMany(models.Food, { through: models.FoodUser, foreignKey: foodId })
         }
         fullName() {
             return this.first_name + " " + this.last_name

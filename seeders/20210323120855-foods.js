@@ -1,32 +1,27 @@
 'use strict';
+const fs = require('fs')
 
-let foods = require('../data/foods.json')
-foods.forEach(e => {
-  e.createdAt = new Date()
-  e.updatedAt = new Date()
-});
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-     await queryInterface.bulkInsert('Food', foods, {});
+  up: (queryInterface, Sequelize) => {
+    let foods = JSON.parse(fs.readFileSync('data/foods.json', 'utf8'))
+    let newFood = []
+      foods.forEach(e => {
+        e.createdAt = new Date()
+        e.updatedAt = new Date()
+        newFood.push(e)
+      });
+    
+     return queryInterface.bulkInsert('Food', foods, {});
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: (queryInterface, Sequelize) => {
     /**
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * return queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('Food', null, {});
+     return queryInterface.bulkDelete('Food', null, {});
   }
 };
