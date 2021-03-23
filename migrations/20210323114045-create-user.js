@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       handphone_number: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       user_name: {
         type: Sequelize.STRING

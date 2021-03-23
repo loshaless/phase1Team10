@@ -1,0 +1,14 @@
+[
+    {
+        "food_name" : "bakso",
+        "price" : 20000
+    },
+    {
+        "food_name" : "ayam goreng",
+        "price" : 15000
+    },
+    {
+        "food_name" : "mie ayam",
+        "price" : 25000
+    }
+]

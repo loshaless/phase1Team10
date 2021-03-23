@@ -1,0 +1,47 @@
+[
+    {
+        "first_name" : "budi",
+        "last_name" : "ikhlas",
+        "address" : "bandung",
+        "handphone_number" :"08123456",
+        "user_name" : "budi",
+        "password" : "123456",
+        "role" : "user"
+    },
+    {
+        "first_name" : "robi",
+        "last_name" : "yudo",
+        "address" : "jakarta",
+        "handphone_number" :"88888",
+        "user_name" : "robi",
+        "password" : "789456",
+        "role" : "admin"
+    },
+    {
+        "first_name" : "orang",
+        "last_name" : "baik",
+        "address" : "bandung",
+        "handphone_number" :"08884",
+        "user_name" : "orang",
+        "password" : "55555",
+        "role" : "user"
+    },
+    {
+        "first_name" : "manusia",
+        "last_name" : "jahat",
+        "address" : "bandung",
+        "handphone_number" :"0898",
+        "user_name" : "manusia",
+        "password" : "456456",
+        "role" : "user"
+    },
+    {
+        "first_name" : "fatih",
+        "last_name" : "kevin",
+        "address" : "bandung",
+        "handphone_number" :"5654",
+        "user_name" : "kevin",
+        "password" : "rahasia123",
+        "role" : "user"
+    }
+]
