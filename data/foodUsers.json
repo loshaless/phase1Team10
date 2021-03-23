@@ -1,26 +1,32 @@
 [
     {
         "foodId" : 1,
-        "userId" : 1
+        "userId" : 1,
+        "foodAmount" : 1
     },
     {
         "foodId" : 1,
-        "userId" : 3
+        "userId" : 3,
+        "foodAmount" : 2
     },
     {
         "foodId" : 1,
-        "userId" : 5
+        "userId" : 5,
+        "foodAmount" : 1
     },
     {
         "foodId" : 2,
-        "userId" : 4
+        "userId" : 4,
+        "foodAmount" : 2
     },
     {
         "foodId" : 3,
-        "userId" : 1
+        "userId" : 1,
+        "foodAmount" : 2
     },
     {
         "foodId" : 3,
-        "userId" : 3
+        "userId" : 3,
+        "foodAmount" : 3
     }
 ]

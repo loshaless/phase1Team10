@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsToMany(models.Food, {through: models.FoodUser, foreignKey:foodId})
     }
+    fullName(){
+      return this.first_name + " " + this.last_name
+    }
   };
   User.init({
     first_name: DataTypes.STRING,
