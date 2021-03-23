@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Food Id</th>
+            <th>Menu Id</th>
+            <th>Food Amount</th>
+        </tr>
+        <%for(let i=0; i < data.length; i++){%>
+            <tr>
+                <td>
+                    <%= data[i].id%>
+                </td>
+                <td>
+                    <%= data[i].foodId%>
+                </td>
+                <td>
+                    <%= data[i].userId%>
+                </td>
+                <td>
+                    <%= data[i].foodAmount%>
+                </td>
+                <td>
+                    <a href="/menu/delete/<%= data[i].id%>">delete</a>
+                    <a href="/menu/edit/<%= data[i].id%>">add</a>
+                </td>
+
+            </tr>
+            <%}%>
+
+    </table>
+</body>
+
+</html>
