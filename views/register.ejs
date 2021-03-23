@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" />
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/register" method="post">
+        <div class="container">
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+
+            <label for="first_name"><b>First name</b></label>
+            <input type="text" placeholder="Enter first name" name="first_name" id="first_name" required>
+            <input type="hidden" id="role" name="role" value="customer">
+            <label for="last_name"><b>Last name</b></label>
+            <input type="last_name" placeholder="Enter last name" name="last_name" id="last_name" required>
+            <label for="user_name"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="user_name" id="user_name" required>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" name="password" id="password" required>
+            <label for="address"><b>Address</b></label>
+            <input type="text" placeholder="Enter address" name="address" id="address" required>
+            <label for="handphone_number"><b>Handphone number</b></label>
+            <input type="handphone_number" placeholder="Enter handphone number" name="handphone_number"
+                id="handphone_number" required>
+            <br>
+            <input type="submit" value="Submit">
+        </div>
+        <div class="container signin">
+            <p>Already have an account? <a href="/login">Sign in</a>.</p>
+        </div>
+    </form>
+
+</body>
+
+</html>

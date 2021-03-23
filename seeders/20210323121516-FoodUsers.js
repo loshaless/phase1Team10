@@ -7,7 +7,7 @@ foodUser.forEach(e => {
 });
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: (queryInterface, Sequelize) => {
     /**
      * Add seed commands here.
      *
@@ -17,16 +17,16 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     await queryInterface.bulkInsert('FoodUsers', foodUser, {});
+     return queryInterface.bulkInsert('FoodUsers', foodUser, {});
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: (queryInterface, Sequelize) => {
     /**
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * return queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('FoodUsers', null, {});
+     return queryInterface.bulkDelete('FoodUsers', null, {});
   }
 };
