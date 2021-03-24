@@ -5,7 +5,7 @@ const menuAdmin = require('./menuRouter')
 const user = require('./userROuter')
 
 router.get('/', (req, res) => {
-    res.send('tes')
+    res.render('home.ejs')
 })
 
 router.use(access)
