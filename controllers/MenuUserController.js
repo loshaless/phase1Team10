@@ -1,8 +1,8 @@
-const {FoodUser} = require('../models')
+const {FoodUser, Food} = require('../models')
 
 class MenuUserController{
     static findAll(req, res) {
-        FoodUser.findAll({
+        Food.findAll({
             order: [['id', 'ASC']]
         })
             .then(data => {
