@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // Food.belongsToMany(models.User, { through: models.FoodUser, foreignKey: 'userId' })
+     Food.belongsToMany(models.User, { through: models.FoodUser, foreignKey: 'foodId' })
     }
     static rupiahFomat(value) {
       let sValue = String(value)
