@@ -12,8 +12,9 @@ class MenuUserController {
     }
     static buy(req, res) {
         let result = []
+        // res.send(req.body);
         for (let i = 0; i < req.body.foodAmount.length; i++) {
-            result.push({ foodId: i + 1, userId: req.session.userId, foodAmount: req.body.foodAmount[i] })
+            result.push({ foodId:  req.body.id[i], userId: req.session.userId, foodAmount: req.body.foodAmount[i] })
         }
         FoodUser.bulkCreate(result)
             .then(() => {
