@@ -70,17 +70,18 @@
                             <%= data[i].price%>
                         </td>
                         <td>
-                            <a href="/menuadmin/delete/<%= data[i].id%>">delete</a>
-                            <a href="/menuadmin/edit/<%= data[i].id%>">edit</a>
+                            <button class="btn btn-primary ">
+                                <a class="text-white" href="/menuadmin/delete/<%= data[i].id%>">delete
+                                </a>
+                            </button>
+                            <button class="btn btn-warning">
+                                <a class="text-white" href="/menuadmin/edit/<%= data[i].id%>">edit</a>
+                            </button>
                         </td>
 
                     </tr>
                     <%}%>
             </table>
-
-
-
-
         </div>
 
 
