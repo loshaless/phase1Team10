@@ -1,8 +1,6 @@
 'use strict';
 const fs = require('fs');
 
-
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     let users = JSON.parse(fs.readFileSync('data/users.json', 'utf8'))

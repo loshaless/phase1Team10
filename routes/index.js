@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const menuAdmin = require('./menuAdminRouter')
 const menuCustomerRouter = require('./menuCustomerRouter.js')
-const user = require('./userROuter')
+const user = require('./userRouter')
 
 router.get('/', (req, res) => {
+    req.session.test = "testttttt"
     res.render('home.ejs')
 })
 

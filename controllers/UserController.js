@@ -2,6 +2,8 @@ const {User} = require('../models')
 
 class UserController{
     static registerForm(req, res) {
+        // req.session.test= "test"
+        console.log(req.session);
         res.render('register.ejs')
     }
     static registerAdd(req, res) {
@@ -34,7 +36,8 @@ class UserController{
                 res.redirect('menuadmin')
             }
             else if (data.role === 'user' && data.password === req.body.password) {
-                res.redirect('menuuser')
+                req.session.userId = data.id
+                res.redirect(`menuuser/`)
             } else {
                 res.send('wrong password / username')
             }

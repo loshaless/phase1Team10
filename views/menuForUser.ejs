@@ -51,7 +51,24 @@
     </section>
     </div>
 
-
+    <form action="/menuuser/buy" method="POST">
+        <table border="5px">
+            <tr>
+              <th>Food</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+            <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].food_name %></td>
+                  <td><%= data[i].price %></td>
+                  <td><input type="text" name="foodAmount" ><br></td>
+                </tr>
+             <% } %>
+          </table><br>
+          <input type="submit" value="Submit">
+    </form>
+    
 
 
 
