@@ -2,9 +2,7 @@ const { User, Food, FoodUser } = require('../models')
 
 class MenuUserController {
     static findAll(req, res) {
-        Food.findAll({
-            order: [['id', 'ASC']]
-        })
+        Food.findAllOrderedByPrice()
             .then(data => {
                 res.render('menuForUser.ejs', { data: data })
             })
@@ -26,14 +24,23 @@ class MenuUserController {
             })
     }
     static buyList(req, res) {
-        User.findOne({ include: [Food], where: { id: req.session.userId } })
+        User.findOne({ include: [Food], where: { id: req.session.userId} })
             .then(data => {
-                // res.send(data)
+                // res.send(data)   
                 res.render('buyList', {data})
             })
             .catch(err => {
                 res.send(err)
             })
+    }
+    static deleteBuyList(req,res){
+        FoodUser.destroy({where:{userId : req.session.userId}})
+        .then(()=>{
+            res.redirect('/menuuser')
+        })
+        .catch(err => {
+            res.send(err)
+        })
     }
 }
 
