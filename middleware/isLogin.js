@@ -3,7 +3,7 @@ const isLogin = (req, res, next) => {
         next()
     }
     else {
-        res.render('error.ejs')
+        res.redirect('/login')
     }
 }
 
