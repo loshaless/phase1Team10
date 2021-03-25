@@ -23,7 +23,7 @@ class MenuAdminController{
         }
         Food.create(menus)
             .then((data) => {
-                res.redirect('/menu')
+                res.redirect('/menuadmin')
             })
             .catch(err => {
                 res.send(err)
@@ -36,7 +36,7 @@ class MenuAdminController{
             where: { id: id}
         })
             .then(() => {
-                res.redirect('/menu')
+                res.redirect('/menuadmin')
             })
             .catch((err) => {
             res.render(err)
@@ -65,7 +65,7 @@ class MenuAdminController{
         }
         Food.create(container)
             .then((data) => {
-                res.redirect('/menu')
+                res.redirect('/menuadmin')
             })
             .catch((err) => {
                 res.send(err)
@@ -84,7 +84,7 @@ class MenuAdminController{
             }
         })  
             .then((data) => {
-                res.redirect('/menu')
+                res.redirect('/menuadmin')
             })
             .catch((err) => {
                 res.send(err)

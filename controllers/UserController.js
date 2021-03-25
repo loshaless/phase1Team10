@@ -28,7 +28,7 @@ class UserController{
        res.render('login.ejs')
     }
 
-    static loginPost(req, res) {
+    static loginAdmin(req, res) {
         User.findOne({
             where: { user_name: req.body.user_name }
         })
@@ -38,7 +38,8 @@ class UserController{
                 const valid = comparePassword(req.body.password, password)
         
                 if (valid) {
-                    res.redirect('/menuuser')
+                    req.session.userId = data.id
+                    res.redirect('/menuadmin')
                 } else {
                     res.send('errors')
                 }
@@ -47,6 +48,24 @@ class UserController{
             res.send(err)
         })
     }
+
+    // static loginPost(req, res) {
+    //     User.findOne({
+    //         where: { user_name: req.body.user_name }
+    //     })
+    //         .then((data) => {
+    //            let password = data.password
+    //             if (comparePassword(req.body.password, password)) {
+    //                 req.session.userId = data.id
+    //                 res.redirect('/menuuser')
+    //             } else {
+    //                 res.send('errors')
+    //             }
+    //         })
+    //         .catch((err) => {
+    //         res.send(err)
+    //     })
+    // }
 }
 
 module.exports = UserController
