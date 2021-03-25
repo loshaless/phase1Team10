@@ -1,5 +1,4 @@
 const { User } = require('../models')
-const user = require('../models/user')
 const {comparePassword} = require('../helper/bcrypt')
 
 class UserController{
@@ -34,9 +33,11 @@ class UserController{
             where: { user_name: req.body.user_name }
         })
             .then((data) => {
-               let password = data.password
-                if (comparePassword(req.body.password, password)) {
-                    req.session.userId = data.id
+           
+                let password = data.password
+                const valid = comparePassword(req.body.password, password)
+        
+                if (valid) {
                     res.redirect('/menuuser')
                 } else {
                     res.send('errors')
