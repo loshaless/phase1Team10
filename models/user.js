@@ -1,6 +1,6 @@
 'use strict';
-const {hashPassword} = require('../helper/bcrypt');
-const {Model} = require('sequelize');
+const { hashPassword } = require('../helper/bcrypt');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         /**
@@ -14,6 +14,19 @@ module.exports = (sequelize, DataTypes) => {
         }
         fullName() {
             return this.first_name + " " + this.last_name
+        }
+        rupiahFomat(value) {
+            let sValue = String(value)
+            let result = ''
+            let jumlah = 0
+            for (let i = sValue.length - 1; i >= 0; i--) {
+                jumlah++
+                result = sValue[i] + result
+                if (jumlah % 3 == 0 && jumlah != 0) {
+                    result = "." + result
+                }
+            }
+            return `Rp${result},-`
         }
     };
     User.init({

@@ -23,24 +23,29 @@ tr:nth-child(even) {
 
 <h2>BUYING LIST</h2>
 
-<P>Name : <%= data.first_name %></P>
+<P>Name : <%= data.fullName() %></P>
 <p>Address : <%= data.address %></p>
 
 <table>
     <tr>
         <th>Food Name</th>
+        <th>Price</th>
         <th>Amount</th>
         <th>Total</th>
       </tr>
+      <% let total = 0 %>
     <% for(var i=0; i < data.Food.length; i++) { %>
         <tr>
           <td><%= data.Food[i].food_name %></td>
+          <td><%= data.rupiahFomat(data.Food[i].price) %></td>
           <td><%= data.Food[i].FoodUser.foodAmount %></td>
-          <td><%= (+data.Food[i].FoodUser.foodAmount)*(+data.Food[i].price) %></td>
+          <td><%= data.rupiahFomat(data.Food[i].FoodUser.foodAmount*data.Food[i].price) %></td>
         </tr>
+        <% total += data.Food[i].FoodUser.foodAmount*data.Food[i].price %>
      <% } %>
+     <p>Total Bill Payment = <%= data.rupiahFomat(total) %></p>
+</table><br>
 
-</table>
-
+<a href="/menuuser/deleteBuyList"><button>Edit List Pembelian</button></a>
 </body>
 </html>
