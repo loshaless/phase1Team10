@@ -36,7 +36,7 @@ class UserController{
             .then((data) => {
                let password = data.password
                 if (comparePassword(req.body.password, password)) {
-                    res.session.id = data.id
+                    req.session.id = data.id
                     res.redirect('/menuuser')
                 } else {
                     res.send('errors')
