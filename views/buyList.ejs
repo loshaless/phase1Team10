@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>BUYING LIST</h2>
+
+<P>Name : <%= data.first_name %></P>
+<p>Address : <%= data.address %></p>
+
+<table>
+    <tr>
+        <th>Food Name</th>
+        <th>Amount</th>
+        <th>Total</th>
+      </tr>
+    <% for(var i=0; i < data.Food.length; i++) { %>
+        <tr>
+          <td><%= data.Food[i].food_name %></td>
+          <td><%= data.Food[i].FoodUser.foodAmount %></td>
+          <td><%= (+data.Food[i].FoodUser.foodAmount)*(+data.Food[i].price) %></td>
+        </tr>
+     <% } %>
+
+</table>
+
+</body>
+</html>
