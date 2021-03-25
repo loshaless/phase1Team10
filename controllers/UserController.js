@@ -8,7 +8,7 @@ class UserController{
         let newData = {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
-            username: req.body.username,
+            user_name: req.body.user_name,
             password: req.body.password,
             address: req.body.address,
             handphone_number: req.body.handphone_number,
