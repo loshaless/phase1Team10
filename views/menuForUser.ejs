@@ -60,7 +60,11 @@
             </tr>
             <% for(var i=0; i < data.length; i++) { %>
                 <tr>
-                  <td><%= data[i].food_name %></td>
+                  <td>
+                    <select name="id">
+                        <option value="<%= data[i].id %>"><%= data[i].food_name %></option>
+                      </select>
+                  </td>
                   <td><%= data[i].price %></td>
                   <td><input type="text" name="foodAmount" ><br></td>
                 </tr>
