@@ -6,4 +6,6 @@ router.get('/menuuser', MenuCustomerController.findAll)
 
 router.post('/menuuser/buy', MenuCustomerController.buy)
 
+router.get('/menuuser/buyList', MenuCustomerController.buyList)
+
 module.exports = router

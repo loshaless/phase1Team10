@@ -1,9 +1,9 @@
-const {User} = require('../models')
+const { User } = require('../models')
+const user = require('../models/user')
+const {comparePassword} = require('../helper/bcrypt')
 
 class UserController{
     static registerForm(req, res) {
-        // req.session.test= "test"
-        console.log(req.session);
         res.render('register.ejs')
     }
     static registerAdd(req, res) {
@@ -30,20 +30,20 @@ class UserController{
     }
 
     static loginPost(req, res) {
-        User.findOne({ where: { user_name: req.body.user_name } })
-        .then((data) => {
-            if (data.role === 'admin' && data.password === req.body.password) {
-                res.redirect('menuadmin')
-            }
-            else if (data.role === 'user' && data.password === req.body.password) {
-                req.session.userId = data.id
-                res.redirect(`menuuser/`)
-            } else {
-                res.send('wrong password / username')
-            }
+        User.findOne({
+            where: { user_name: req.body.user_name }
         })
-        .catch(() => {
-                res.send('wrong username/password')
+            .then((data) => {
+               let password = data.password
+                if (comparePassword(req.body.password, password)) {
+                    res.session.id = data.id
+                    res.redirect('/menuuser')
+                } else {
+                    res.send('errors')
+                }
+            })
+            .catch((err) => {
+            res.send(err)
         })
     }
 }

@@ -1,4 +1,4 @@
-const { User, Food, UserFood } = require('../models')
+const { User, Food, FoodUser } = require('../models')
 
 class MenuUserController {
     static findAll(req, res) {
@@ -13,10 +13,23 @@ class MenuUserController {
             })
     }
     static buy(req, res) {
-        User.findAll({ include: [Food] })
+        let result = []
+        for (let i = 0; i < req.body.foodAmount.length; i++) {
+            result.push({ foodId: i + 1, userId: req.session.userId, foodAmount: req.body.foodAmount[i] })
+        }
+        console.log(req.session.userId);
+        FoodUser.bulkCreate(result)
+            .then(() => {
+                res.redirect('/menuuser/buyList')
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    }
+    static buyList(req, res) {
+        User.findOne({ include: [Food], where: { id: req.session.userId } })
             .then(data => {
-                console.log(req.session);
-                res.send(String(req.session))
+                res.send(data)
             })
             .catch(err => {
                 res.send(err)
