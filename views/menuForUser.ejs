@@ -30,49 +30,32 @@
 
 </style>
 
-<!-- <body>
-    <section class="herobwa mt-5">
-        <div class="container">
-            <h1 class="text-center mb-5">Our Menu</h1>
-            <div class="row">
-                <%for(let i=0; i < data.length; i++){%>
-                    <div class="col text-center d-none d-sm-block">
-                        <img width="150" src="pic.png" alt="">
-                        <h5 class="font-22 font-weight-bold m-0">
-                            <%= data[i].food_name%>
-                        </h5>
-                        <p class="font-16">
-                            <%= data[i].price%>
-                        </p>
-                    </div>
-                    <%}%>
-            </div>
-        </div>
-    </section>
-    </div> -->
 
-    <form action="/menuuser/buy" method="POST">
-        <table border="5px">
+<form action="/menuuser/buy" method="POST">
+    <table border="5px">
+        <tr>
+            <th>Food</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <% for(var i=0; i < data.length; i++) { %>
             <tr>
-              <th>Food</th>
-              <th>Price</th>
-              <th>Quantity</th>
-            </tr>
-            <% for(var i=0; i < data.length; i++) { %>
-                <tr>
-                  <td>
+                <td>
                     <select name="id">
-                        <option value="<%= data[i].id %>"><%= data[i].food_name %></option>
-                      </select>
-                  </td>
-                  <td><%= data[i].price %></td>
-                  <td><input type="text" name="foodAmount" ><br></td>
-                </tr>
-             <% } %>
-          </table><br>
-          <input type="submit" value="Submit">
-    </form>
-    
+                        <option value="<%= data[i].id %>">
+                            <%= data[i].food_name %>
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <%= data[i].price %>
+                </td>
+                <td><input type="text" name="foodAmount"><br></td>
+            </tr>
+            <% } %>
+    </table><br>
+    <input type="submit" value="Submit">
+</form>
 
 
 
@@ -83,12 +66,13 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

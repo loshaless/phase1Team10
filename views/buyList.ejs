@@ -1,51 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../public/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
+<style>
+  body {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .bg-custom {
+    background: #FBE0DC;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px 20px 10px 10px;
+    width: 100px;
+  }
+
+  .bg-btn {
+    background: #F7C531;
+    border-radius: 30px 30px 10px 10px;
+    width: 180px;
+  }
+
+  .font-46 {
+    font-size: 46px;
+  }
+
+  .font-22 {
+    font-size: 22px;
+  }
+
+  div.dataTables_wrapper div.dataTables_paginate {
+    display: none;
+  }
+
+  div.dataTables_wrapper div.dataTables_info {
+
+    display: none;
+  }
+
+</style>
+
 <body>
 
-<h2>BUYING LIST</h2>
+  <div class="container mt-2 mb-2">
+    <h2>BUYING LIST</h2>
+    <div>
+      <P>Name : <%= data.fullName() %>
+      </P>
+      <p>Address : <%= data.address %>
+      </p>
+    </div>
 
-<P>Name : <%= data.fullName() %></P>
-<p>Address : <%= data.address %></p>
 
-<table>
-    <tr>
-        <th>Food Name</th>
-        <th>Price</th>
-        <th>Amount</th>
-        <th>Total</th>
-      </tr>
-      <% let total = 0 %>
-    <% for(var i=0; i < data.Food.length; i++) { %>
+
+    <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+      <thead>
         <tr>
-          <td><%= data.Food[i].food_name %></td>
-          <td><%= data.rupiahFomat(data.Food[i].price) %></td>
-          <td><%= data.Food[i].FoodUser.foodAmount %></td>
-          <td><%= data.rupiahFomat(data.Food[i].FoodUser.foodAmount*data.Food[i].price) %></td>
+          <th data-field="state" data-checkbox="true" data-visible="false"></th>
+          <th>Food Name</th>
+          <th>Price</th>
+          <th>Amount</th>
+          <th>Total</th>
         </tr>
-        <% total += data.Food[i].FoodUser.foodAmount*data.Food[i].price %>
-     <% } %>
-     <p>Total Bill Payment = <%= data.rupiahFomat(total) %></p>
-</table><br>
+      </thead>
 
-<a href="/menuuser/deleteBuyList"><button>Edit List Pembelian</button></a>
+      <% let total=0 %>
+
+        <% for(var i=0; i < data.Food.length; i++) { %>
+
+          <tr>
+            <td></td>
+            <td>
+              <%= data.Food[i].food_name %>
+            </td>
+            <td>
+              <%= data.rupiahFomat(data.Food[i].price) %>
+            </td>
+            <td>
+              <%= data.Food[i].FoodUser.foodAmount %>
+            </td>
+            <td>
+              <%= data.rupiahFomat(data.Food[i].FoodUser.foodAmount*data.Food[i].price) %>
+            </td>
+          </tr>
+          <% total +=data.Food[i].FoodUser.foodAmount*data.Food[i].price %>
+            <% } %>
+              <div>
+                <p>Total Bill Payment = <%= data.rupiahFomat(total) %>
+                </p>
+                <div class="mb-3">
+                  <a href="/menuuser/deleteBuyList"><button class="btn btn-secondary">Edit List Pembelian</button></a>
+                </div>
+              </div>
+    </table>
+
+    <br>
+
+
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      var table = $('#example').DataTable({
+        lengthChange: false,
+        buttons: ['copy', 'excel', 'csv', 'pdf', 'colvis']
+      });
+
+      table.buttons().container()
+        .appendTo('#example_wrapper .col-md-6:eq(0)');
+    });
+  </script>
 </body>
+
 </html>
