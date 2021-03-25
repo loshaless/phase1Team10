@@ -3,6 +3,13 @@ const path = require('path')
 const app = express()
 const router = require('./routes')
 const port = 3000
+var session = require('express-session')
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+  }))
 
 app.use(express.urlencoded({extended: true}))
 app.set('view engine', 'ejs')

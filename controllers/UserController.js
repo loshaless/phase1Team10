@@ -36,9 +36,8 @@ class UserController{
            
                 let password = data.password
                 const valid = comparePassword(req.body.password, password)
-            
+        
                 if (valid) {
-                    console.log('msduk vslif');
                     res.redirect('/menuuser')
                 } else {
                     res.send('errors')

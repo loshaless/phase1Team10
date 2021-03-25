@@ -12,6 +12,4 @@ router.use(menuAdmin)
 router.use(menuCustomerRouter)
 router.use(user)
 
-
-
 module.exports = router

@@ -1,7 +1,6 @@
 'use strict';
 const fs = require('fs')
 
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     let foods = JSON.parse(fs.readFileSync('data/foods.json', 'utf8'))
@@ -12,7 +11,7 @@ module.exports = {
         newFood.push(e)
       });
     
-     return queryInterface.bulkInsert('Food', foods, {});
+     return queryInterface.bulkInsert('Food', newFood, {});
   },
 
   down: (queryInterface, Sequelize) => {

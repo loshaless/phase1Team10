@@ -10,7 +10,7 @@ module.exports = {
         e.updatedAt = new Date()
         newFoodUser.push(e)
       });
-     return queryInterface.bulkInsert('FoodUsers', foodUser, {});
+     return queryInterface.bulkInsert('FoodUsers', newFoodUser, {});
   },
 
   down: (queryInterface, Sequelize) => {

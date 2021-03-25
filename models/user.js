@@ -15,6 +15,19 @@ module.exports = (sequelize, DataTypes) => {
         fullName() {
             return this.first_name + " " + this.last_name
         }
+        rupiahFomat(value) {
+            let sValue = String(value)
+            let result = ''
+            let jumlah = 0
+            for (let i = sValue.length - 1; i >= 0; i--) {
+                jumlah++
+                result = sValue[i] + result
+                if (jumlah % 3 == 0 && jumlah != 0) {
+                    result = "." + result
+                }
+            }
+            return `Rp${result},-`
+        }
     };
     User.init({
         first_name: DataTypes.STRING,
@@ -28,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         sequelize,
         modelName: 'User',
 
-        hooks: {
+           hooks: {
             beforeCreate: (instance, options) => {
                 if (!instance.last_name) {
                     instance.last_name = instance.first_name
