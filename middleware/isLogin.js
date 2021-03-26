@@ -1,5 +1,5 @@
 const isLogin = (req, res, next) => {
-    if (req.session.user_name) {
+    if (req.session.isLogin == 'user') {
         next()
     }
     else {

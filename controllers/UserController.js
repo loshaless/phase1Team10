@@ -39,6 +39,7 @@ class UserController{
         
                 if (valid) {
                     req.session.userId = data.id
+                    req.session.isLogin = data.role
                     res.redirect('/menuadmin')
                 } else {
                     res.send('errors')
