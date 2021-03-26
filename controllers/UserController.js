@@ -36,7 +36,7 @@ class UserController{
            
                 let password = data.password
                 const valid = comparePassword(req.body.password, password)
-        
+                
                 if (valid) {
                     req.session.userId = data.id
                     req.session.isLogin = data.role
@@ -49,6 +49,10 @@ class UserController{
             res.send(err)
         })
     }
+    static logout (req,res){
+        req.session.isLogin = ""
+		res.redirect('/login')	
+	}
 
     // static loginPost(req, res) {
     //     User.findOne({
